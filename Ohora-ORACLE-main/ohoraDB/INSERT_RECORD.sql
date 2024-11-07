@@ -929,7 +929,7 @@ VALUES (80, 1001, '집', '김덕춘', '02-543-2031', '010-1234-5678', '서울 �
 
 --이미지 파일 더미값 생성 [ 1~24 반복 및 추가구성상품(169~175)은 pk값과 동일하게]
 UPDATE o_product
-SET pdt_img_url = MOD(pdt_id - 1, 24) + 1);
+SET pdt_img_url = MOD(pdt_id - 1, 24) + 1;
 
 UPDATE o_product
 SET pdt_img_url = pdt_id
