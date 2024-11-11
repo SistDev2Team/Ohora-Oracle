@@ -11,7 +11,10 @@ ALTER TABLE o_user ADD USER_EMAILAGREE CHAR(1);
 --디폴트 N줬음 이메일도 
 alter table o_user modify USER_EMAILAGREE default 'N';
 
-
+-- 댓글 시퀀스
+CREATE SEQUENCE O_COMMENT_SEQ
+START WITH 10
+  
 -- 리뷰 테이블에 제품번호 컬럼 추가
 ALTER TABLE o_review
 ADD pdt_id INT;
@@ -158,6 +161,13 @@ VALUES
 INSERT INTO o_comment
 VALUES
 ( 8 , 5 , 1004  , '2024-10-29','비~~상~~');
+
+
+-- 사진 더미 추가
+INSERT INTO o_revurl VALUES( 1, 3, 'eca2cf24df7f0b57.webp' , 'eca2cf24df7f0b57.webp' , 10000 );
+INSERT INTO o_revurl VALUES( 2, 4, '5862d5a348b87057.webp' , '5862d5a348b87057.webp' , 10000 );
+
+
 
 
 COMMIT;
