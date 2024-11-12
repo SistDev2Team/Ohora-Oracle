@@ -1,12 +1,5 @@
 --회원 추가사항 (o_user)
 
---email동의 컬럼 추가
-ALTER TABLE o_user ADD USER_EMAILAGREE CHAR(1);
-
---디폴트 N줬음 이메일도 
-alter table o_user modify USER_EMAILAGREE default 'N';
-
-
 -- 리뷰 테이블에 제품번호 컬럼 추가
 ALTER TABLE o_review
 ADD pdt_id INT;
@@ -22,13 +15,6 @@ ADD CONSTRAINT fk_o_product
 FOREIGN KEY (pdt_id)
 REFERENCES o_product(pdt_id);
 
--- 카트리스트 id를 order테이블의 FK로 주기
-ALTER TABLE o_order
-ADD CONSTRAINT fk_o_cartlist_to_o_order
-FOREIGN KEY (cart_id)
-REFERENCES o_cartlist(clist_id);
-
-
 -- 리뷰URL 테이블 수정 (포토 영상 구분 없애고 파일로서 관리)
 ALTER TABLE o_revurl DROP COLUMN rurl_photo;
 ALTER TABLE o_revurl DROP COLUMN rurl_record;
@@ -42,10 +28,6 @@ COMMENT ON COLUMN o_revurl.filesystemname IS '오리지널파일명';
 ALTER TABLE o_revurl ADD filelength NUMBER;
 COMMENT ON COLUMN o_revurl.filesystemname IS '파일용량';
 
-
-
-
-
 --더미 (선택 - 리뷰할 때 쓰려고 급조)
 select *
 from o_user;
@@ -58,43 +40,6 @@ from o_order;
 
 select *
 from o_review;
-
---주문 
-INSERT INTO o_order 
-VALUES
-( 1 , 1 , 1001 , '' , '주문자' , '서울시 강남구 역삼동 1', '07112' ,'01012345678' , '', '','2024-10-15',30000,0,0,'','신용카드',3000);
-
-INSERT INTO o_order 
-VALUES
-( 2 , 2 , 1002 , '' , '김정열' , '서울시 종로구 창신동 1','07113', '01012345666' , '', '','2024-10-17',55000,0,0,'','신용카드',0);
-
-INSERT INTO o_order 
-VALUES
-( 3 , 3 , 1001 , '' , '주문자' , '서울시 강남구 역삼동 1','07132', '01012345678' , '', '','2024-10-18',37000,0,0,'','계좌이체',0);
-
-INSERT INTO o_order 
-VALUES
-( 4 , 4 , 1003 , '' , '야나기' , '서울시 강동구 롯데월드 1','07119', '01012345678' , '', '','2024-10-19',120000,0,0,'','카카오페이',0);
-
-INSERT INTO o_order 
-VALUES
-( 5 , 5 , 1004 , '' , '루시' , '용인시 처인구 대덕로 1','07166', '01012545678' , '', '','2024-10-20',12000,0,0,'','토스',3000);
-
-INSERT INTO o_order 
-VALUES
-( 5 , 5 , 1004 , '' , '루시' , '용인시 처인구 대덕로 1','07444', '01012545678' , '', '','2024-10-20',12000,0,0,'','토스',3000);
-
-INSERT INTO o_order 
-VALUES
-( 6 , 6 , 1005 , '' , '미야기' , '대전광역시 유성구 한국로 1','04112', '01013545678' , '', '','2024-10-21',85000,0,0,'','계좌이체',0);
-
-INSERT INTO o_order 
-VALUES
-( 7 , 7 , 1005 , '' , '미야기' , '대전광역시 유성구 한국로 1','07912', '01013545698' , '', '','2024-10-24',65000,0,0,'','신용카드',0);
-
-INSERT INTO o_order 
-VALUES
-( 8 , 8 , 1006 , '' , '페이커' , '서울시 강남구 역삼동 21','01112', '01011545698' , '', '','2024-11-05',19000,0,0,'','신용카드',3000);
 
 -- 리뷰 더미
 INSERT INTO o_review 
