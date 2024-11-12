@@ -1,7 +1,4 @@
 --게시판 공지 더미데이터
-select *
-from ohora_notice_Board;
-
 
 CREATE TAbLE ohora_notice_Board (
 
@@ -19,9 +16,8 @@ CREATE SEQUENCE ohora_notice_seq
     INCREMENT BY 1 
     NOCACHE;
 
+    -- tag : 2는 안중요한 공지
     -- tag : 1은 고정할 공지
-    -- tag : 2는 고정하지 않을 공지
-    
 
 --insert문 예시
 INSERT INTO ohora_notice_Board (seq, writer, title, writedate, readed, tag, content) 
