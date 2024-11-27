@@ -387,14 +387,6 @@ ADD pdtid INT;
 ALTER TABLE oreview
 MODIFY pdtid NUMBER;
 
-COMMENT ON COLUMN oreview.pdtid IS '제품ID';
-
--- 리뷰에 제품번호 FK로 주기
-ALTER TABLE oreview
-ADD CONSTRAINT fk_oproduct
-FOREIGN KEY (pdtid)
-REFERENCES oproduct(pdtid);
-
 -- 리뷰URL 테이블 수정 (포토 영상 구분 없애고 파일로서 관리)
 ALTER TABLE orevurl DROP COLUMN rurlphoto;
 ALTER TABLE orevurl DROP COLUMN rurlrecord;
