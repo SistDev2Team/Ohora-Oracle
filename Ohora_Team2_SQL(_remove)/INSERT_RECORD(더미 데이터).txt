@@ -1,9 +1,60 @@
+-- 관리자 계정 삽입
+INSERT INTO SCOTT.OUSER (
+    USERID, 
+    MEMID, 
+    USERNAME, 
+    PASSWORD, 
+    NAME, 
+    USEREMAIL, 
+    USERTEL, 
+    USERBIRTH, 
+    USERPOINT, 
+    USERSNSAGREE, 
+    USERJOINDATE, 
+    ENABLED
+) VALUES (
+    SCOTT.O_USER_SEQ.NEXTVAL,      -- USERID
+    1,                             -- MEMID
+    'admin',                       -- USERNAME
+    '$2a$10$qzjYDw7xsn7KDAn81LBF1ud0N2xVwm8zVtjL4Bh1oZuujvnFXROUC', -- 암호화된 비밀번호
+    '관리자',                      -- NAME
+    'admin@example.com',           -- USEREMAIL
+    '010-1234-5678',               -- USERTEL
+    TO_DATE('1990-01-01', 'YYYY-MM-DD'), -- USERBIRTH
+    0,                             -- USERPOINT
+    'Y',                           -- USERSNSAGREE
+    SYSDATE,                       -- USERJOINDATE
+    1                              -- ENABLED
+);
+
+-- 관리자 권한한 삽입
+INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_ADMIN');
+INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_MANAGER');
+INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_USER');
+
+-- 매니저 계정 삽입
+INSERT INTO SCOTT.OUSER (
+    USERID, 
+    MEMID, 
+    USERNAME, 
+    PASSWORD, 
+    NAME, 
+    USEREMAIL, 
+    USERTEL, 
+    USERBIRTH, 
+    USERPOINT, 
+    USERSNSAGREE, 
+    USERJOINDATE, 
+    ENABLED
+) VALUES (
+    SCOT입
+INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_MANAGER');
+INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_USER');
+
+
 -- 레코드(상품더미데이터) 전부 생성
 -- ctrl + A 
 -- ctrl + ENTER
-
-
-
 INSERT INTO OLINEUP (LINEUPID, LINEUPOPTION)
 VALUES (1, N'아트');
 
