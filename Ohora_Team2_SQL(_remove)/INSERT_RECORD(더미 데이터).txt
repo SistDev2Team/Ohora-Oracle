@@ -2,38 +2,7 @@
 -- ctrl + A 
 -- ctrl + ENTER
 
--- 관리자 계정 삽입
-INSERT INTO SCOTT.OUSER (
-    USERID, 
-    MEMID, 
-    USERNAME, 
-    PASSWORD, 
-    NAME, 
-    USEREMAIL, 
-    USERTEL, 
-    USERBIRTH, 
-    USERPOINT, 
-    USERSNSAGREE, 
-    USERJOINDATE, 
-    ENABLED
-) VALUES (
-    1,                 -- USERID: 관리자 고유 ID
-    1,                    -- MEMID: 관리자 멤버십 ID (더미 값)
-    'admin',              -- USERNAME: 관리자 아이디
-    '$2a$10$qzjYDw7xsn7KDAn81LBF1ud0N2xVwm8zVtjL4Bh1oZuujvnFXROUC',   --비번 암호화
-    '관리자',         -- NAME: 관리자 이름
-    'admin@example.com',  -- USEREMAIL: 관리자 이메일
-    '010-1234-5678',      -- USERTEL: 관리자 전화번호
-    TO_DATE('1990-01-01', 'YYYY-MM-DD'), -- USERBIRTH: 관리자 생년월일
-    0,                -- USERPOINT: 적립금 (더미 값)
-    'Y',                  -- USERSNSAGREE: SNS 수신 동의
-    SYSDATE,              -- USERJOINDATE: 가입일 (현재 날짜)
-    1                     -- ENABLED: 계정 활성화
-);
 
--- 관리자 권한 삽입
-INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (1, 'ROLE_ADMIN');
-INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (1, 'ROLE_MANAGER');
 
 INSERT INTO OLINEUP (LINEUPID, LINEUPOPTION)
 VALUES (1, N'아트');
