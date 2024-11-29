@@ -27,7 +27,7 @@ INSERT INTO SCOTT.OUSER (
     1                              -- ENABLED
 );
 
--- 관리자 권한한 삽입
+-- 관리자 권한 삽입
 INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_ADMIN');
 INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_MANAGER');
 INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_USER');
@@ -47,7 +47,21 @@ INSERT INTO SCOTT.OUSER (
     USERJOINDATE, 
     ENABLED
 ) VALUES (
-    SCOT입
+    SCOTT.O_USER_SEQ.NEXTVAL,                -- USERID: 매니저 고유 ID
+    1,                                       -- MEMID: 매니저 멤버십 ID (더미 값)
+    'manager',                               -- USERNAME: 매니저 아이디
+    '$2a$10$JiMVeTuROd54YU8J6BgQo.so4pM4Xn.fhmpgx8tHZ3TkN9Q5Ivs4i', -- 암호화된 비밀번호
+    '매니저',                                -- NAME: 매니저 이름
+    'manager@example.com',                   -- USEREMAIL: 매니저 이메일
+    '010-5678-1234',                         -- USERTEL: 매니저 전화번호
+    TO_DATE('1992-02-02', 'YYYY-MM-DD'),     -- USERBIRTH: 매니저 생년월일
+    0,                                       -- USERPOINT: 적립금 (더미 값)
+    'Y',                                     -- USERSNSAGREE: SNS 수신 동의
+    SYSDATE,                                 -- USERJOINDATE: 가입일 (현재 날짜)
+    1                                        -- ENABLED: 계정 활성화
+);
+
+-- 매니저 권한 삽입
 INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_MANAGER');
 INSERT INTO SCOTT.OAUTH (USERID, AUTHORITY) VALUES (SCOTT.O_USER_SEQ.CURRVAL, 'ROLE_USER');
 
