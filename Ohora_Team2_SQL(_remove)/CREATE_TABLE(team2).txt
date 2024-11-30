@@ -68,6 +68,9 @@ CREATE TABLE SCOTT.OPRODUCT (
 	PDTDESCRIPTION NVARCHAR2(200), /* 상품 설명 */
 	CONSTRAINT PK_OPRODUCT PRIMARY KEY (PDTID)
 );
+/* 상품 재고수량은 0 이하로 내려갈 수 없음 제약조건  */
+ALTER TABLE oproduct
+    ADD CONSTRAINT ck_oproduct_pdtcount CHECK (pdtcount >= 0);
 
 /* 리뷰 */
 CREATE TABLE SCOTT.OREVIEW (
